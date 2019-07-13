@@ -72,6 +72,7 @@
             <label for="pass">Password:</label>
             <input type="password" name="password" placeholder="" id="pass"/>
             <p id="rem"><input type="checkbox" name="remember_me" id="remember_me"/> <label for="remember_me">Remember me</label></p>
+            <p class="goto-link"> <a href="recover_account.php">Forgot password</a></p>
 
             <button type="submit" name="login">Login</button>
 

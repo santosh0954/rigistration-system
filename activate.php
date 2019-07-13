@@ -9,7 +9,7 @@
         $message_success = "<div class='message success'>Email already activated.";
         $message_success .= "<p><small>Going automatically to login page, if not <a style = 'color: rgba(255,255,255,0.7);' href='login.php'>Click here.</a></small></p></div>";
       }else {
-          $query = "UPDATE admin_panel SET active = 'On'";
+          $query = "UPDATE admin_panel SET active = 'On' WHERE token='$TokenFromUrl'";
           $excute = mysqli_query($con, $query);
           if ($excute) {
               $message_success = "<div class='message success'>Account activated successfully.";
