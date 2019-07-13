@@ -3,7 +3,10 @@
   require_once 'includes/config.php';
   require_once 'includes/function.php';
   define('title', 'User Registration');
-
+ // If already login then forwarding user to welcome page
+ if(login()) {
+  Redirect_to('welcome.php');
+}
   // Adding default value for variable
   $username = $email = $password = $confirmPassword = $message = $message_success = "";
 

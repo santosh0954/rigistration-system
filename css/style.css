@@ -57,7 +57,7 @@ label {
     letter-spacing: 1px;
 }
 
-input {
+input:not([type= "checkbox"]){
     display: block;
     width: 100%;
     padding: 10px;
@@ -67,6 +67,12 @@ input {
     margin: 10px 0;
     font-weight: 500;
     letter-spacing: 2px;
+}
+#rem {
+    text-align: left;
+}
+#rem label {
+    display: inline;
 }
 
 button {

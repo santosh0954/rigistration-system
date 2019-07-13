@@ -83,13 +83,13 @@ function confirmAccountActivation() {
 
 // function for login 
 function login() {
-    if(isset($_SESSION['user_id'])) {
+    if(isset($_SESSION['user_id']) || isset($_COOKIE['cookie_id'])) {
         return true;
     }
 }
 function confirmLogin() {
     if(!login()) {
-    $_SESSION['message'] = "<div class='message'>You have to login.</div>";
+    $_SESSION['message'] = "<div class='message'>You have to login!</div>";
     Redirect_to('login.php');
     }
 }

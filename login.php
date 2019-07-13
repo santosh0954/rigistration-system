@@ -3,7 +3,10 @@
   require_once 'includes/config.php';
   require_once 'includes/function.php';
   define('title', 'User Login');
-
+ // If already login then forwarding user to welcome page
+ if(login()) {
+   Redirect_to('welcome.php');
+ }
   // Adding default value for variable
   $email = $password =  $message =  "";
 
@@ -25,6 +28,12 @@
         $_SESSION['user_id'] = $found_account['id'];
         $_SESSION['user_name'] = $found_account['username'];
         $_SESSION['user_email'] = $found_account['email'];
+        // Create cookie for remember me 
+        if(isset($_POST['remember_me'])) {
+          setcookie('cookie_id', $_SESSION['user_id'], time()+86400 );
+          setcookie('cookie_name', $_SESSION['user_name'], time()+86400 );
+          setcookie('cookie_email', $_SESSION['user_email'], time()+86400);
+        }
         Redirect_to('welcome.php');
       }else {
         $message = "<div class='message'>Invalid Email / Password!</div>";
@@ -62,6 +71,7 @@
             <input type="email" name="email" placeholder="" id="email" value="<?php if(!empty($message)) echo $email ?>"/>
             <label for="pass">Password:</label>
             <input type="password" name="password" placeholder="" id="pass"/>
+            <p id="rem"><input type="checkbox" name="remember_me" id="remember_me"/> <label for="remember_me">Remember me</label></p>
 
             <button type="submit" name="login">Login</button>
 

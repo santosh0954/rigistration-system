@@ -22,8 +22,14 @@ if(!login()) {
 </head>
 <body>
    <?php 
-   echo $_SESSION['user_id'].'and'. $_SESSION['user_name'], $_SESSION['user_email'];
+   if (isset($_SESSION['user_id'])) {
+       echo $_SESSION['user_id'].'and'. $_SESSION['user_name'], $_SESSION['user_email'];
+   }else
+   if(isset($_COOKIE['cookie_id'])) {
+    echo $_COOKIE['cookie_id'].'and'. $_COOKIE['cookie_name'], $_COOKIE['cookie_email'];
+   }
    ?>
     <h1>Welcome</h1>
+    <a href= "logout.php">Logout</a>
 </body>
 </html>
